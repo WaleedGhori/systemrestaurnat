@@ -8,14 +8,9 @@ function App() {
   const [userArray, setUserArray] = useState([]);
 
   const handleGetStarted = (data) => {
-    setUserArray([...userArray, data]);
-    console.log(userArray);
+    const allUser = [...userArray, data];
+    setUserArray(allUser)
   };
-
-   useEffect(() => {
-    console.log('Updated userArray:', userArray);
-  }, [userArray]);
-
   return (
     <Router>
       <Routes>

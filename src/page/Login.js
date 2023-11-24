@@ -10,19 +10,20 @@ const Login = ({userArray}) => {
     navigate('/signup'); // Navigate to the 'signup' route
   };
 
+
+    
+  useEffect(()=>{
+      console.log(userArray);
+  },[userArray])
+
+
   const handleChange = (e) =>{
     if(e.target.name === 'firstName')setFirstName(e.target.value)
     if(e.target.name === 'phone')setPhone(e.target.value)
   }
   const handleLogin = () => {
     if (firstName.length >= 3 && phone.length >= 10) {
-      console.log('userArray', userArray);
-      if(userArray.length === 0 ){
-        alert("User is not exits")
-      }
-      else{
-        alert("Yeah Great")
-      }
+       console.log(userArray);
     } else {
       alert('Something went wrong!');
     }
