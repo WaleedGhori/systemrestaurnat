@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = ({handleGetStarted}) => {
-
+  const navigate = useNavigate();
   const [firstName ,setFirstName] = useState('')
   const [lastName ,setLastName] = useState('')
   const [email ,setEmail] = useState('')
@@ -23,6 +23,7 @@ const handleGetStartedClick = () => {
   } else {
     alert("Something went wrong!");
   }
+  navigate('/login'); // Navigate to the 'signup' route
 };
   // const navigation  = useNavigate()
   // navigation('/AddRestaurant')

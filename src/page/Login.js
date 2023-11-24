@@ -2,7 +2,7 @@ import React from 'react';
 import { useState , useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({userArray}) => {
+const Login = ({userArray, loginUser, lock}) => {
   const navigate = useNavigate();
  const [firstName , setFirstName] = useState('')
  const [phone , setPhone] = useState('')
@@ -13,8 +13,8 @@ const Login = ({userArray}) => {
 
     
   useEffect(()=>{
-      console.log(userArray);
-  },[userArray])
+      console.log(userArray , lock);
+  },[userArray,lock])
 
 
   const handleChange = (e) =>{
@@ -23,7 +23,8 @@ const Login = ({userArray}) => {
   }
   const handleLogin = () => {
     if (firstName.length >= 3 && phone.length >= 10) {
-       console.log(userArray);
+      const data =  {firstName , phone} 
+      loginUser(data)
     } else {
       alert('Something went wrong!');
     }
@@ -45,7 +46,7 @@ const Login = ({userArray}) => {
               <p className='mb-6 text-base '>Log into your account</p>
               <input className='bg-gray-100 py-3 px-2 w-[90%] m-2 rounded-md text-lg' placeholder='E-mail' onChange={handleChange} value={firstName} name='firstName'/>
               <input className='bg-gray-100 py-3 px-2 w-[90%] m-2 rounded-md text-lg' placeholder='password' onChange={handleChange} value={phone} name='phone' />
-              <button className='mt-2 mb-4 w-[90%] px-2 text-lg font-medium rounded-md py-3 hover:bg-gray-700 hover:text-gray-900 bg-slate-900 text-white transition duration-300 ease-in-out transform' onClick={handleLogin}>Login</button>
+              <button className='mt-2 mb-4 w-[90%] px-2 text-lg font-medium rounded-md py-3 hover:bg-gray-700 hover:text-gray-900 bg-slate-900 text-white transition duration-300 ease-in-out transform' onClick={handleLogin} disabled={lock===true?true:false}>Login</button>
               <p className='float-right pr-4 pb-3 text-base'>forgot password</p>
             </div>
           </div>
